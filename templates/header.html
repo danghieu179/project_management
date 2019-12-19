@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+    {% load staticfiles %}
+    {% load bootstrap4 %} {# import bootstrap4 #}
+    {% bootstrap_css %} {# Embed Bootstrap CSS #}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <div class="col-sm-12 m-auto text-white d-flex align-items-center"
+            style="background-color: black; height: 50px;">
+            <div class="col-sm-2 text-center">
+                <a href="/">Delivery Management</a>
+            </div>
+            <div class="col-sm-9 text-right">
+                <a href="/jira" class="text-white-50">JIRA</a>
+                <a href="/sonar" class="text-white-50 pl-5">Sonar</a>
+                <a href="/resources" class="text-white-50 pl-5">Resources</a>
+            </div>
+        </div>
+    </header>
+</body>
+
+</html>
