@@ -1,7 +1,11 @@
-from django.shortcuts import render
-
-# Create your views here.
+from django.views.generic.base import TemplateView
 
 
-def resources(request):
-    return render(request, 'resources_page.html', {'title': 'Resources'})
+class ResourcesPageView(TemplateView):
+
+    template_name = "resources_page.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Resources'
+        return context

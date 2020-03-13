@@ -14,11 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path, include
-import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', include('core_app.urls')),
     path('jira/', include('jira_app.urls')),
     path('sonar/', include('sonarqube_app.urls')),
     path('resources/', include('resources_app.urls')),
+    path('', include('google_api.urls')),
 ]

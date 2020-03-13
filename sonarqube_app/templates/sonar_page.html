@@ -1,32 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "card.html" %}
 
-{% include "header.html" %}
+{% load static %}
+{% load widget_tweaks %}
 
-<body>
-    <div class="col-sm-6 m-auto">
-        <h1 class="col-sm-12">Sonar Report</h1>
-        <div class="d-flex">
-            <div class="col-sm-3">
-                Google File*:
+{% block partial_settings %}
+{% block scripts %}
+<link rel="stylesheet" type="text/css" href="{% static 'sonarqube_app/css/styles.css' %}">
+<script type="text/javascript" charset="utf8" src="{% static '/sonarqube_app/js/static.js' %}"></script>
+{% endblock %}
+
+
+<div class="container">
+    <form method="POST" action="{% url 'sonar'%}" id="form_submit">
+        {% csrf_token %}
+        <div class="d-flex align-items-center row">
+            <div class="col-sm-2 text-right">
+                Google File<span class="text-danger">*</span>:
             </div>
-            <div class="col-sm-9">
-                {{ form.url }}
+            <div class="col-sm-8 pl-0">
+                {{ form.url | add_class:"form-control"}}
+            </div>
+
+            <div class="col-2">
+                <button type="submit" class="btn btn-primary-outline p-0">
+                    <li class="fa fa-search" style="font-size: 30px"></li>
+                </button>
             </div>
         </div>
-        <div class="d-flex">
-            <div class="col-sm-6 d-flex align-items-baseline">
-                <p>Username*:</p>
-                {{ form.username }}
-            </div>
-            <div class="col-sm-6 d-flex m-auto align-items-baseline">
-                <p>Password*:</p>
-                {{ form.password }}
-            </div>
-            <span class="glyphicon glyphicon-search"></span>
-        </div>
-    </div>
+        <p class='error-message offset-sm-2' mess="{{status}}">
+            {{status}}
+        </p>
+        {% if filter_sonar == 'True' %}
+        {% include "sonar_filter.html" %}
+        {% endif %}
+    </form>
+</div>
 
-</body>
-
-</html>
+{% endblock %}

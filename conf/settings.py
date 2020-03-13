@@ -31,16 +31,27 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'sonarqube_app.apps.SonarqubeAppConfig',
-    'jira_app.apps.JiraAppConfig',
-    'resources_app.apps.ResourcesAppConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap4'
 ]
+
+LOCAL_APPS = [
+    'core_app.apps.CoreAppConfig',
+    'sonarqube_app.apps.SonarqubeAppConfig',
+    'jira_app.apps.JiraAppConfig',
+    'resources_app.apps.ResourcesAppConfig',
+    'google_api.apps.GoogleApiConfig',
+]
+
+EXTENSION_APPS = [
+    'widget_tweaks',
+]
+
+INSTALLED_APPS += LOCAL_APPS
+INSTALLED_APPS += EXTENSION_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,7 +68,7 @@ ROOT_URLCONF = 'conf.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'core_app/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,7 +133,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# this is the static files folder name which you created in django project root folder. This is different from above STATIC_URL. 
+
+# this is the static files folder name which you created in django project root folder. This is different from above STATIC_URL.
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]

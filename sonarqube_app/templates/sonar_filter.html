@@ -1,0 +1,56 @@
+{% load widget_tweaks %}
+
+<hr style="border-top: 1px dashed;">
+<div class="d-flex align-items-center mb-3 row">
+    <div class="col-sm-2 text-right">
+        Project<span class="text-danger">*</span>:
+    </div>
+    {{ input_from.project | append_attr:"multiple" | add_class:"col-sm-3 px-0 form-control" }}
+    <div class="col-sm-1 ml-4 text-right">From<span class="text-danger">*</span>:</div>
+    <div class="input-group date flex-nowrap col-sm-2 px-0 datetime-picker" id="datetimepickerfrom"
+        data-target-input="nearest">
+        {{ input_from.from_date | add_class:"col-sm-10 text-center datetimepicker-input form-control" | append_attr:"data-target:#datetimepickerfrom" }}
+        <div class="input-group-append" data-target="#datetimepickerfrom" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+        </div>
+    </div>
+    <div class="col-sm-1 text-right">To<span class="text-danger">*</span>:</div>
+    <div class="input-group date flex-nowrap col-sm-2 px-0 datetime-picker" id="datetimepickerto"
+        data-target-input="nearest">
+        {{ input_from.to_date | add_class:"col-sm-10 text-center datetimepicker-input form-control" | append_attr:"data-target:#datetimepickerto"}}
+        <div class="input-group-append " data-target="#datetimepickerto" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+        </div>
+    </div>
+</div>
+<div class="d-flex align-items-center mb-3 text-center row">
+    <div class="col-sm-2 text-right">
+        Blocker:
+    </div>
+    {{ input_from.blocker | add_class:"col-sm-1 text-center input-validation form-control" }}
+    <div class="col-sm-1 text-right">
+        Critical:
+    </div>
+    {{ input_from.critical | add_class:"col-sm-1 text-center input-validation form-control"}}
+    <div class="col-sm-1 ml-4 text-right">
+        Major:
+    </div>
+    {{ input_from.major | add_class:"col-sm-1 text-center input-validation form-control"}}
+    <div class="col-sm-2 text-right">
+        Minor:
+    </div>
+    {{ input_from.minor | add_class:"col-sm-1 text-center input-validation form-control"}}
+</div>
+<div class="d-flex align-items-center mb-3 text-center row">
+    <div class="col-sm-2 text-right">
+        Unit Test(%):
+    </div>
+    {{ input_from.unit_test | add_class:"col-sm-1 text-center input-validation form-control" }}
+</div>
+<div class="d-flex align-items-center mb-3 justify-content-center">
+    <button type="submit" class="btn btn-primary" name="view">View</button>
+</div>
+<div class="d-flex align-items-center mb-3 justify-content-end">
+    {{ input_from.show_chart }}
+    <label for="id_show_chart">Show Charts</label>
+</div>

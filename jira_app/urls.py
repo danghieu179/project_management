@@ -14,8 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from . import views
+from .views import JiraPageView
 
 urlpatterns = [
-    path('', views.jira, name='jira'),
+    path('', JiraPageView.as_view(), name='jira'),
 ]

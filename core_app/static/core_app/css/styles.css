@@ -1,0 +1,10 @@
+.navbar-default {
+  background-color: black !important;
+}
+
+.card-header .fa {
+  transition: .3s transform ease-in-out;
+}
+.card-header .collapsed .fa {
+  transform: rotate(180deg);
+}

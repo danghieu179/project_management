@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+<div class="card" style="width: device-width; font-size: 1rem; margin-left: 4rem; margin-right: 4rem; margin-top: 1rem;">
+    <div class="card-header text-white" style="background-color:#3678B3"> {{ card_title }}
+        <div class="float-right">
+            <a href="#" data-target=".dynamic-body" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
+                <i class="fa fa-chevron-up pull-right text-white"></i>
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="dynamic-body collapse show">
+            {% block partial_settings %}
+            {% endblock %}
+        </div>
+            {% block partial_content %}
+            {% endblock %}
+    </div>
+</div>
+{% endblock %}

@@ -14,8 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from . import views
+from .views import SonarPageView, SonarFilterPageView
 
 urlpatterns = [
-    path('', views.sonar, name='sonar'),
+    path('',  SonarPageView.as_view(), name='sonar'),
+    path('filtersonar/',  SonarFilterPageView.as_view(), name='filtersonar'),
 ]
